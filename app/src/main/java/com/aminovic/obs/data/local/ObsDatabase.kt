@@ -1,6 +1,7 @@
 package com.aminovic.obs.data.local
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.aminovic.obs.data.local.entities.AthleteEntity
 import com.aminovic.obs.data.local.entities.GameEntity
 
@@ -8,6 +9,6 @@ import com.aminovic.obs.data.local.entities.GameEntity
     entities = [AthleteEntity::class, GameEntity::class],
     version = 1
 )
-abstract class ObsDatabase {
+abstract class ObsDatabase: RoomDatabase() {
     abstract val dao: ObsDao
 }

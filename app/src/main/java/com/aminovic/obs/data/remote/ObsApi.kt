@@ -26,6 +26,6 @@ interface ObsApi {
     suspend fun getGameAthletes(@Path("id") id: Int): Resource<GameDto>
 
     companion object {
-        const val baseUrl = "https://ocs-test-backend.onrender.com/"
+        const val BASE_URL = "https://ocs-test-backend.onrender.com/"
     }
 }
