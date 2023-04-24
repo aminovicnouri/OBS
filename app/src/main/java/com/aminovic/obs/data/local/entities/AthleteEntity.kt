@@ -33,4 +33,7 @@ data class AthleteEntity(
 
     @ColumnInfo(name = "photoId")
     val photoId: Int? = null,
+
+    @ColumnInfo(name = "results")
+    val results: List<ResultEntity> = emptyList(),
 )

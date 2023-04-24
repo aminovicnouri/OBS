@@ -24,7 +24,6 @@ interface ObsDao {
             WHERE athlete_id = :id
         """
     )
-
     suspend fun getAthlete(id: Int): AthleteEntity?
 
 

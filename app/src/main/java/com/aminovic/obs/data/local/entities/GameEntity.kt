@@ -16,5 +16,5 @@ data class GameEntity(
     val year: Int,
 
     @ColumnInfo(name = "athletes")
-    val athletes: List<Int>,
+    val athletes: List<Int> = emptyList(),
 )
