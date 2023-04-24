@@ -2,7 +2,7 @@ package com.aminovic.obs.domain.modal
 
 
 data class Athlete(
-    val athleteId: String? = null,
+    val athleteId: String,
     val name: String? = null,
     val surname: String? = null,
     val dateOfBirth: String? = null,

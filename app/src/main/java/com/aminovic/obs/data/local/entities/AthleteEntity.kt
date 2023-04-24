@@ -11,7 +11,7 @@ import com.aminovic.obs.data.local.Constants.Tables.ATHLETES_TABLE
 data class AthleteEntity(
     @PrimaryKey
     @ColumnInfo(name = "athlete_id")
-    val athleteId: String? = null,
+    val athleteId: String,
 
     @ColumnInfo(name = "name")
     val name: String? = null,

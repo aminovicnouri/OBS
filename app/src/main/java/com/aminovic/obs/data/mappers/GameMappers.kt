@@ -4,7 +4,7 @@ import com.aminovic.obs.data.local.entities.GameEntity
 import com.aminovic.obs.data.remote.dto.GameDto
 import com.aminovic.obs.domain.modal.Game
 
-fun GameDto.ToGame(): Game {
+fun GameDto.toGame(): Game {
     return Game(
         id = id,
         city = city,
@@ -17,6 +17,15 @@ fun Game.toGameEntity(): GameEntity {
         id = id,
         city = city,
         year = year,
-        athletes = athletes
+        athletes = athletes.map { it.toAthleteEntity() }
+    )
+}
+
+fun GameEntity.toGame(): Game {
+    return Game(
+        id = id,
+        city = city,
+        year = year,
+        athletes = ArrayList(athletes.map { it.toAthlete() })
     )
 }

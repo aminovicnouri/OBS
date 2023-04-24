@@ -1,9 +1,7 @@
 package com.aminovic.obs.domain.repository
 
-import com.aminovic.obs.data.remote.dto.AthleteDto
-import com.aminovic.obs.data.remote.dto.GameDto
-import com.aminovic.obs.data.remote.dto.ResultDto
 import com.aminovic.obs.domain.modal.Athlete
+import com.aminovic.obs.domain.modal.AthleteResult
 import com.aminovic.obs.domain.modal.Game
 import com.aminovic.obs.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -15,22 +13,25 @@ interface ObsRepository {
 
     fun getAthletes(): Flow<List<Athlete>>
 
+    suspend fun getAthletesByIds(ids: List<String>): List<Athlete>
+
     suspend fun getAthlete(id: Int): Athlete?
 
     suspend fun deleteAthletes()
 
     suspend fun insertGame(game: Game)
 
+    fun getGames(): Flow<List<Game>>
+
     suspend fun deleteGames()
 
     // remote
-    suspend fun getAthletesData(): Resource<List<AthleteDto>>
 
-    suspend fun getAthleteData(id: Int): Resource<AthleteDto>
+    suspend fun getAthleteData(id: Int): Resource<Athlete>
 
-    suspend fun getAthleteResults(id: Int): Resource<List<ResultDto>>
+    suspend fun getAthleteResults(id: String): Resource<List<AthleteResult>>
 
-    suspend fun getGames(): Resource<List<GameDto>>
+    suspend fun getGamesData(): Resource<List<Game>>
 
-    suspend fun getGameAthletes(id: Int): Resource<GameDto>
+    suspend fun getGameAthletes(id: Int): Resource<List<Athlete>>
 }

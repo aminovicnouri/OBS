@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class AthleteDto(
     @field:Json(name = "athlete_id")
-    val athleteId: String? = null,
+    val athleteId: String,
     val name: String? = null,
     val surname: String? = null,
     val dateOfBirth: String? = null,

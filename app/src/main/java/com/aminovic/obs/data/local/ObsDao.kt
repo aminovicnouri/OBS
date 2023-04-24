@@ -26,6 +26,15 @@ interface ObsDao {
     )
     suspend fun getAthlete(id: Int): AthleteEntity?
 
+  @Query(
+        """
+            SELECT *
+            FROM $ATHLETES_TABLE
+            WHERE athlete_id In (:ids)
+        """
+    )
+    suspend fun getAthletesByIds(ids: List<String>): List<AthleteEntity>?
+
 
     @Query("DELETE FROM $ATHLETES_TABLE")
     suspend fun deleteAthletes()
