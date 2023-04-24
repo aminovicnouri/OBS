@@ -52,7 +52,7 @@ object AppModule {
         return Room.databaseBuilder(
             app,
             ObsDatabase::class.java,
-            "weather_db"
+            "obs_database"
         ).build().dao
     }
 
