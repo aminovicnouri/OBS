@@ -10,5 +10,6 @@ data class Athlete(
     val weight: Int? = null,
     val height: Int? = null,
     val photoId: Int? = null,
-    val results: List<AthleteResult> = emptyList()
+    val results: List<AthleteResult> = emptyList(),
+    var score: Int = 0
 )

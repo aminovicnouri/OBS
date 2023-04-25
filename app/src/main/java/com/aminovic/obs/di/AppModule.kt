@@ -8,6 +8,7 @@ import com.aminovic.obs.data.remote.ObsApi
 import com.aminovic.obs.data.remote.ObsApi.Companion.BASE_URL
 import com.aminovic.obs.data.repository.ObsRepositoryImpl
 import com.aminovic.obs.domain.repository.ObsRepository
+import com.aminovic.obs.domain.use_cases.LoadGamesDataUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -60,5 +61,11 @@ object AppModule {
     @Singleton
     fun provideObsRepository(api: ObsApi, database: ObsDao): ObsRepository {
         return ObsRepositoryImpl(api = api, dao = database)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoadGamesUseCase(repository: ObsRepository): LoadGamesDataUseCase {
+        return LoadGamesDataUseCase(repository = repository)
     }
 }

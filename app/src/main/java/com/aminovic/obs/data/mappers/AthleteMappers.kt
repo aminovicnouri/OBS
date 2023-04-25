@@ -16,6 +16,7 @@ fun AthleteDto.toAthlete(): Athlete {
         photoId = photoId,
     )
 }
+
 fun Athlete.toAthleteEntity(): AthleteEntity {
     return AthleteEntity(
         athleteId = athleteId,
@@ -26,8 +27,10 @@ fun Athlete.toAthleteEntity(): AthleteEntity {
         weight = weight,
         height = height,
         photoId = photoId,
+        score = score
     )
 }
+
 fun AthleteEntity.toAthlete(): Athlete {
     return Athlete(
         athleteId = athleteId,
@@ -38,6 +41,7 @@ fun AthleteEntity.toAthlete(): Athlete {
         weight = weight,
         height = height,
         photoId = photoId,
-        results = results.map { it.toAthleteResult() }
+        results = results.map { it.toAthleteResult() },
+        score = score
     )
 }

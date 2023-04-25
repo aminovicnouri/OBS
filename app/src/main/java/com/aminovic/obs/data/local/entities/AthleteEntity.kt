@@ -36,4 +36,7 @@ data class AthleteEntity(
 
     @ColumnInfo(name = "results")
     val results: List<ResultEntity> = emptyList(),
+
+    @ColumnInfo(name = "score")
+    val score: Int = 0,
 )

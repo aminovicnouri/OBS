@@ -1,10 +1,9 @@
 package com.aminovic.obs.ui.main_screen
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aminovic.obs.domain.repository.ObsRepository
-import com.aminovic.obs.domain.utils.Resource
+import com.aminovic.obs.domain.use_cases.LoadGamesDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: ObsRepository
+    private val repository: ObsRepository,
+    private val loadGamesDataUseCase: LoadGamesDataUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(MainState())
@@ -29,65 +29,18 @@ class MainViewModel @Inject constructor(
     }
 
     private fun init() {
+        _state.update { it.copy(isLoading = true, error = null) }
         viewModelScope.launch {
             repository.getGames().collect { listOfGames ->
-                Log.d("hhhhhhhhh", "$listOfGames")
-                _state.update { it.copy(isLoading = false, error = null, gamesList = listOfGames) }
+                _state.update { it.copy(gamesList = listOfGames) }
             }
         }
-        loadDataFormApi()
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val error = loadGamesDataUseCase()
+                _state.update { it.copy(isLoading = false, error = error) }
+            }
+        }
     }
 
-    private fun loadDataFormApi() {
-        viewModelScope.launch() {
-            _state.update { it.copy(isLoading = true) }
-            withContext(Dispatchers.IO) {
-                when (val result = repository.getGamesData()) {
-                    is Resource.Error -> {
-                        _state.update { it.copy(isLoading = false, error = result.message) }
-                    }
-                    is Resource.Success -> {
-                        result.data?.let { gamesList ->
-                            val games = gamesList.associateBy { it.id }
-                            games.forEach { (id, game) ->
-                                when (val gameAthletes = repository.getGameAthletes(game.id)) {
-                                    is Resource.Error -> {
-                                        _state.update {
-                                            it.copy(
-                                                isLoading = false,
-                                                error = gameAthletes.message
-                                            )
-                                        }
-                                    }
-                                    is Resource.Success -> {
-                                        gameAthletes.data?.onEach { athlete ->
-                                            when (val athleteResult =
-                                                repository.getAthleteResults(athlete.athleteId)) {
-                                                is Resource.Error -> {
-                                                    _state.update {
-                                                        it.copy(
-                                                            isLoading = false,
-                                                            error = athleteResult.message
-                                                        )
-                                                    }
-                                                }
-                                                is Resource.Success -> {
-                                                    val ath = athlete.copy(
-                                                        results = athleteResult.data ?: emptyList()
-                                                    )
-                                                    game.athletes.add(ath)
-                                                }
-                                            }
-                                        }
-                                        repository.insertGame(game)
-                                    }
-                                }
-                            }
-                        }
-                        _state.update { it.copy(isLoading = false, error = null) }
-                    }
-                }
-            }
-        }
-    }
 }
