@@ -24,7 +24,6 @@ interface ObsRepository {
     suspend fun deleteGames()
 
     // remote
-
     suspend fun getAthleteData(id: String): Resource<Athlete>
 
     suspend fun getAthleteResults(id: String): Resource<List<AthleteResult>>
