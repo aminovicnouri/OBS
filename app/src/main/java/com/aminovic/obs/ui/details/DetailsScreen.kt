@@ -19,7 +19,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -28,10 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aminovic.obs.R
 import com.aminovic.obs.ui.details.components.AthleteCard
-import com.aminovic.obs.ui.details.components.ExpandedText
 import com.aminovic.obs.ui.details.components.MedalsRow
 import com.aminovic.obs.ui.theme.Colors.DarkBlue
-import com.aminovic.obs.ui.theme.Colors.Gold
+import com.mukesh.MarkDown
 
 @Composable
 fun DetailsScreen(
@@ -137,25 +135,8 @@ fun DetailsScreen(
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(text = stringResource(R.string.bio), fontSize = 24.sp)
-                ExpandedText(
-                    text = athlete.bio!!.substring(0, 100),
-                    expandedText = athlete.bio,
-                    expandedTextButton = " more",
-                    shrinkTextButton = " less",
-                    textStyle = MaterialTheme.typography.body1.copy(color = Color.White.copy(alpha = 0.6f)),
-                    expandedTextStyle = MaterialTheme.typography.body1.copy(
-                        color = Color.White.copy(
-                            alpha = 0.8f
-                        )
-                    ),
-                    expandedTextButtonStyle = MaterialTheme.typography.body1.copy(
-                        color = Gold,
-                    ),
-                    shrinkTextButtonStyle = MaterialTheme.typography.body1.copy(
-                        color = Gold,
-                    ),
-                    modifier = Modifier
-                        .padding(top = 5.dp, start = 8.dp, end = 8.dp)
+                MarkDown(
+                    text = athlete.bio!!,
                 )
             }
         }
