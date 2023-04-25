@@ -3,4 +3,11 @@
     <string name="no_athletes">No athletes</string>
     <string name="olympic_athletes">Olympic Athletes</string>
     <string name="loading_data_from_server">Loading data from server</string>
+    <string name="dob">Date of birth: </string>
+    <string name="weight">Weight :</string>
+    <string name="height">Height :</string>
+    <string name="refresh_button">refresh button</string>
+    <string name="back_button">back button</string>
+    <string name="medals">Medals</string>
+    <string name="bio">Bio</string>
 </resources>

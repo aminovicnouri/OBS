@@ -29,10 +29,6 @@ class ObsRepositoryImpl(
         return dao.getAthletesByIds(ids)?.map { it.toAthlete() } ?: emptyList()
     }
 
-    override suspend fun getAthlete(id: Int): Athlete? {
-        return dao.getAthlete(id = id)?.toAthlete()
-    }
-
     override suspend fun deleteAthletes() {
         dao.deleteAthletes()
     }
@@ -52,7 +48,7 @@ class ObsRepositoryImpl(
     }
 
 
-    override suspend fun getAthleteData(id: Int): Resource<Athlete> {
+    override suspend fun getAthleteData(id: String): Resource<Athlete> {
         return try {
             Resource.Success(api.getAthlete(id).toAthlete())
         } catch (e: Exception) {

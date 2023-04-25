@@ -8,6 +8,7 @@ import com.aminovic.obs.data.remote.ObsApi
 import com.aminovic.obs.data.remote.ObsApi.Companion.BASE_URL
 import com.aminovic.obs.data.repository.ObsRepositoryImpl
 import com.aminovic.obs.domain.repository.ObsRepository
+import com.aminovic.obs.domain.use_cases.GetAthleteDataUseCase
 import com.aminovic.obs.domain.use_cases.LoadGamesDataUseCase
 import dagger.Module
 import dagger.Provides
@@ -67,5 +68,10 @@ object AppModule {
     @Singleton
     fun provideLoadGamesUseCase(repository: ObsRepository): LoadGamesDataUseCase {
         return LoadGamesDataUseCase(repository = repository)
+    }
+    @Provides
+    @Singleton
+    fun provideGetAthleteDataUseCase(repository: ObsRepository): GetAthleteDataUseCase {
+        return GetAthleteDataUseCase(repository = repository)
     }
 }

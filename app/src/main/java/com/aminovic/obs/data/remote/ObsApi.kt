@@ -7,12 +7,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ObsApi {
-
-    @GET("athletes")
-    suspend fun getAthletes(): List<AthleteDto>
-
     @GET("athletes/{id}")
-    suspend fun getAthlete(@Path("id") id: Int): AthleteDto
+    suspend fun getAthlete(@Path("id") id: String): AthleteDto
 
     @GET("athletes/{id}/results")
     suspend fun getAthleteResults(@Path("id") id: String): List<ResultDto>

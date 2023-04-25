@@ -18,7 +18,7 @@ import com.aminovic.obs.domain.modal.Game
 @Composable
 fun GameRow(
     game: Game,
-    onAthleteClick: (String) -> Unit
+    onAthleteClick: (String, String) -> Unit
 ) {
     Spacer(modifier = Modifier.height(8.dp))
     Card(

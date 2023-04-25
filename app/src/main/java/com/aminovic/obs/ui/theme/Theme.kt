@@ -1,7 +1,10 @@
 package com.aminovic.obs.ui.theme
 
 
-import androidx.compose.material.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Shapes
+import androidx.compose.material.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -11,20 +14,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aminovic.obs.R
 
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.shape.RoundedCornerShape
-
 @Composable
-fun OBSTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
-        darkColors
-    } else {
-        lightColors
-    }
+fun OBSTheme(content: @Composable () -> Unit) {
+    val colors = darkColors
 
     val sfProText = FontFamily(
         Font(
-            resId = com.aminovic.obs.R.font.sf_pro_text_regular,
+            resId = R.font.sf_pro_text_regular,
             weight = FontWeight.Normal
         ),
         Font(

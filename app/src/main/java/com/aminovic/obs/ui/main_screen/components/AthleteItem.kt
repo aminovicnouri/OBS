@@ -20,7 +20,7 @@ import com.aminovic.obs.domain.modal.Athlete
 import com.aminovic.obs.ui.theme.Colors
 
 @Composable
-fun AthleteItem(athlete: Athlete, onClick: (String) -> Unit) {
+fun AthleteItem(athlete: Athlete, onClick: (String, String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -35,7 +35,7 @@ fun AthleteItem(athlete: Athlete, onClick: (String) -> Unit) {
                 .size(70.dp)
                 .clip(shape = CircleShape)
                 .background(color = Colors.DarkBlue)
-                .clickable { onClick(athlete.athleteId) },
+                .clickable { onClick(athlete.athleteId, "${athlete.name} ${athlete.surname}") },
             contentScale = ContentScale.Fit
         )
         Spacer(modifier = Modifier.height(8.dp))

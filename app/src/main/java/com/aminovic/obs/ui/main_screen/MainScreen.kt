@@ -7,24 +7,20 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aminovic.obs.R
 import com.aminovic.obs.ui.main_screen.components.GameRow
 import com.aminovic.obs.ui.theme.Colors
 
 @Composable
 fun MainScreen(
-    mainViewModel: MainViewModel = hiltViewModel()
+    state: MainState,
+    onAthleteClicked: (String, String) -> Unit
 ) {
-    val state by mainViewModel.state.collectAsStateWithLifecycle()
-
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -61,7 +57,7 @@ fun MainScreen(
             if (state.error != null) {
                 Row(horizontalArrangement = Arrangement.Center) {
                     Text(
-                        text = state.error!!,
+                        text = state.error,
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center
                     )
@@ -78,8 +74,7 @@ fun MainScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(count = state.gamesList.size) {
-                    GameRow(game = state.gamesList[it], {})
-
+                    GameRow(game = state.gamesList[it], onAthleteClicked)
                 }
             }
         }
