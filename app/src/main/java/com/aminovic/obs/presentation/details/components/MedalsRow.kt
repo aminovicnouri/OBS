@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.details.components
+package com.aminovic.obs.presentation.details.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,7 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.aminovic.obs.domain.modal.AthleteResult
-import com.aminovic.obs.ui.theme.Colors
+import com.aminovic.obs.presentation.ui.theme.Colors
 
 @Composable
 fun MedalsRow(

@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.main_screen
+package com.aminovic.obs.presentation.main_screen
 
 import com.aminovic.obs.domain.modal.Game
 

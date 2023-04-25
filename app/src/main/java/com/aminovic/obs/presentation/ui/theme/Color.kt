@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.theme
+package com.aminovic.obs.presentation.ui.theme
 
 import android.annotation.SuppressLint
 import androidx.compose.material.darkColors

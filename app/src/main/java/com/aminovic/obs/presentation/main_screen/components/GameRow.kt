@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.main_screen.components
+package com.aminovic.obs.presentation.main_screen.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow

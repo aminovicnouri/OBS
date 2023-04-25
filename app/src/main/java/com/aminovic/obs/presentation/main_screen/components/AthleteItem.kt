@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.main_screen.components
+package com.aminovic.obs.presentation.main_screen.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.aminovic.obs.data.remote.ObsApi.Companion.BASE_URL
 import com.aminovic.obs.domain.modal.Athlete
-import com.aminovic.obs.ui.theme.Colors
+import com.aminovic.obs.presentation.ui.theme.Colors
 
 @Composable
 fun AthleteItem(athlete: Athlete, onClick: (String, String) -> Unit) {

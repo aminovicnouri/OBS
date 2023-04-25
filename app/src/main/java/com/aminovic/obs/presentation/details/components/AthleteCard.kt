@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.details.components
+package com.aminovic.obs.presentation.details.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -21,7 +21,7 @@ import coil.compose.AsyncImage
 import com.aminovic.obs.R
 import com.aminovic.obs.data.remote.ObsApi
 import com.aminovic.obs.domain.modal.Athlete
-import com.aminovic.obs.ui.theme.Colors
+import com.aminovic.obs.presentation.ui.theme.Colors
 
 @Composable
 fun AthleteCard(

@@ -15,12 +15,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.aminovic.obs.ui.Screens
-import com.aminovic.obs.ui.details.DetailsScreen
-import com.aminovic.obs.ui.details.DetailsViewModel
-import com.aminovic.obs.ui.main_screen.MainScreen
-import com.aminovic.obs.ui.main_screen.MainViewModel
-import com.aminovic.obs.ui.theme.OBSTheme
+import com.aminovic.obs.presentation.Screens
+import com.aminovic.obs.presentation.details.DetailsScreen
+import com.aminovic.obs.presentation.details.DetailsViewModel
+import com.aminovic.obs.presentation.main_screen.MainScreen
+import com.aminovic.obs.presentation.main_screen.MainViewModel
+import com.aminovic.obs.presentation.ui.theme.OBSTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,6 +43,7 @@ class MainActivity : ComponentActivity() {
                             val state by mainViewModel.state.collectAsStateWithLifecycle()
                             MainScreen(
                                 state = state,
+                                onEvent = mainViewModel::onEvent,
                                 onAthleteClicked = { athleteId, AthleteName ->
                                     navController.navigate(
                                         Screens.Details.route + "/$athleteId/$AthleteName"

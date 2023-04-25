@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.details
+package com.aminovic.obs.presentation.details
 
 import com.aminovic.obs.domain.modal.Athlete
 

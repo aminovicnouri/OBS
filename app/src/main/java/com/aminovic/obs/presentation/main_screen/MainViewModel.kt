@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.main_screen
+package com.aminovic.obs.presentation.main_screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,15 +28,27 @@ class MainViewModel @Inject constructor(
         init()
     }
 
+    fun onEvent(event: MainEvent) {
+        when (event) {
+            is MainEvent.GetGames -> {
+                getGames()
+            }
+        }
+    }
+
     private fun init() {
-        _state.update { it.copy(isLoading = true, error = null) }
+        getGames()
         viewModelScope.launch {
             repository.getGames().collect { listOfGames ->
                 _state.update { it.copy(gamesList = listOfGames) }
             }
         }
+    }
+
+    private fun getGames() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
+                _state.update { it.copy(isLoading = true, error = null) }
                 val error = loadGamesDataUseCase()
                 _state.update { it.copy(isLoading = false, error = error) }
             }

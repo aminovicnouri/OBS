@@ -1,4 +1,4 @@
-package com.aminovic.obs.ui.details
+package com.aminovic.obs.presentation.details
 
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -26,9 +26,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aminovic.obs.R
-import com.aminovic.obs.ui.details.components.AthleteCard
-import com.aminovic.obs.ui.details.components.MedalsRow
-import com.aminovic.obs.ui.theme.Colors.DarkBlue
+import com.aminovic.obs.presentation.details.components.AthleteCard
+import com.aminovic.obs.presentation.details.components.MedalsRow
+import com.aminovic.obs.presentation.ui.theme.Colors.DarkBlue
 import com.mukesh.MarkDown
 
 @Composable
